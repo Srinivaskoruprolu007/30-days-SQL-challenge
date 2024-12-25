@@ -165,3 +165,13 @@ WHERE
     );
 
 
+-- using window function and gropu by
+WITH ranked_products AS (
+    SELECT p.product_name, p.price, s.country
+    , RoW_NUMBER() OVER (PARTITION BY s.country ORDER BY p.price DESC) AS rank
+    FROM product AS p
+    JOIN supplier AS s ON p.supplier_id = s.supplier_id
+)
+SELECT product_name, price, country
+FROM ranked_products
+WHERE rank = 1;
