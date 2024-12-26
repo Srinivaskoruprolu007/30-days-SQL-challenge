@@ -1,177 +1,143 @@
-/* 
-1. you have two tables: product and supplier
-product tables columns : product_id, product_name, supplier_id, price
-supplier tables columns : supplier_id, supplier_name, country
+-- Amazon Interview Practice 21/02/2024
 
- */
 
--- create a  supplier table
-CREATE TABLE supplier (
-    supplier_id INT PRIMARY KEY,
-    supplier_name VARCHAR(255) NOT NULL,
-    country VARCHAR(255) NOT NULL
-
-)
-
--- create a product table
-CREATE TABLE product (
-    product_id INT PRIMARY KEY,
-    product_name VARCHAR(255) NOT NULL,
-    supplier_id INT NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id)
-)
-
--- Insert sample data into supplier table (50 or more)
-INSERT INTO supplier (supplier_id, supplier_name, country) VALUES
-(1, 'Supplier1', 'USA'),
-(2, 'Supplier2', 'Canada'),
-(3, 'Supplier3', 'Mexico'),
-(4, 'Supplier4', 'USA'),
-(5, 'Supplier5', 'Canada'),
-(6, 'Supplier6', 'Mexico'),
-(7, 'Supplier7', 'USA'),
-(8, 'Supplier8', 'Canada'),
-(9, 'Supplier9', 'Mexico'),
-(10, 'Supplier10', 'USA'),
-(11, 'Supplier11', 'Canada'),
-(12, 'Supplier12', 'Mexico'),
-(13, 'Supplier13', 'USA'),
-(14, 'Supplier14', 'Canada'),
-(15, 'Supplier15', 'Mexico'),
-(16, 'Supplier16', 'USA'),
-(17, 'Supplier17', 'Canada'),
-(18, 'Supplier18', 'Mexico'),
-(19, 'Supplier19', 'USA'),
-(20, 'Supplier20', 'Canada'),
-(21, 'Supplier21', 'Mexico'),
-(22, 'Supplier22', 'USA'),
-(23, 'Supplier23', 'Canada'),
-(24, 'Supplier24', 'Mexico'),
-(25, 'Supplier25', 'USA'),
-(26, 'Supplier26', 'Canada'),
-(27, 'Supplier27', 'Mexico'),
-(28, 'Supplier28', 'USA'),
-(29, 'Supplier29', 'Canada'),
-(30, 'Supplier30', 'Mexico'),
-(31, 'Supplier31', 'USA'),
-(32, 'Supplier32', 'Canada'),
-(33, 'Supplier33', 'Mexico'),
-(34, 'Supplier34', 'USA'),
-(35, 'Supplier35', 'Canada'),
-(36, 'Supplier36', 'Mexico'),
-(37, 'Supplier37', 'USA'),
-(38, 'Supplier38', 'Canada'),
-(39, 'Supplier39', 'Mexico'),
-(40, 'Supplier40', 'USA'),
-(41, 'Supplier41', 'Canada'),
-(42, 'Supplier42', 'Mexico'),
-(43, 'Supplier43', 'USA'),
-(44, 'Supplier44', 'Canada'),
-(45, 'Supplier45', 'Mexico'),
-(46, 'Supplier46', 'USA'),
-(47, 'Supplier47', 'Canada'),
-(48, 'Supplier48', 'Mexico'),
-(49, 'Supplier49', 'USA'),
-(50, 'Supplier50', 'Canada'),
-(51, 'Supplier51', 'Mexico'),
-(52, 'Supplier52', 'USA'),
-(53, 'Supplier53', 'Canada'),
-(54, 'Supplier54', 'Mexico'),
-(55, 'Supplier55', 'USA'),
-(56, 'Supplier56', 'Canada'),
-(57, 'Supplier57', 'Mexico'),
-(58, 'Supplier58', 'USA'),
-(59, 'Supplier59', 'Canada'),
-(60, 'Supplier60', 'Mexico'),
-(61, 'Supplier61', 'USA'),
-(62, 'Supplier62', 'Canada'),
-(63, 'Supplier63', 'Mexico'),
-(64, 'Supplier64', 'USA'),
-(65, 'Supplier65', 'Canada');
+/* 1. You have two tables: Product and Supplier.
+- Product Table Columns: Product_id, Product_Name, Supplier_id, Price
+- Supplier Table Columns: Supplier_id, Supplier_Name, Country
+*/
 
 
 
--- Insert sample data into product table with 50 rows
-INSERT INTO product (product_id, product_name, supplier_id, price)
-VALUES
-    (1, 'Product1', 1, 10.99),
-    (2, 'Product2', 2, 9.99),
-    (3, 'Product3', 3, 8.99),
-    (4, 'Product4', 4, 7.99),
-    (5, 'Product5', 5, 6.99),
-    (6, 'Product6', 6, 5.99),
-    (7, 'Product7', 7, 4.99),
-    (8, 'Product8', 8, 3.99),
-    (9, 'Product9', 9, 2.99),
-    (10, 'Product10', 10, 1.99),
-    (11, 'Product11', 11, 10.99),
-    (12, 'Product12', 12, 9.99),
-    (13, 'Product13', 13, 8.99),
-    (14, 'Product14', 14, 7.99),
-    (15, 'Product15', 15, 6.99),
-    (16, 'Product16', 16, 5.99),
-    (17, 'Product17', 17, 4.99),
-    (18, 'Product18', 18, 3.99),
-    (19, 'Product19', 19, 2.99),
-    (20, 'Product20', 20, 1.99),
-    (21, 'Product21', 21, 10.99),
-    (22, 'Product22', 22, 9.99),
-    (23, 'Product23', 23, 8.99),
-    (24, 'Product24', 24, 7.99),
-    (25, 'Product25', 25, 6.99),
-    (26, 'Product26', 26, 5.99),
-    (27, 'Product27', 27, 4.99),
-    (28, 'Product28', 28, 3.99),
-    (29, 'Product29', 29, 2.99),
-    (30, 'Product30', 30, 1.99),
-    (31, 'Product31', 31, 10.99),
-    (32, 'Product32', 32, 9.99),
-    (33, 'Product33', 33, 8.99),
-    (34, 'Product34', 34, 7.99),
-    (35, 'Product35', 35, 6.99),
-    (36, 'Product36', 36, 5.99),
-    (37, 'Product37', 37, 4.99),
-    (38, 'Product38', 38, 3.99),
-    (39, 'Product39', 39, 2.99),
-    (40, 'Product40', 40, 1.99),
-    (41, 'Product41', 41, 10.99),
-    (42, 'Product42', 42, 9.99),
-    (43, 'Product43', 43, 8.99),
-    (44, 'Product44', 44, 7.99),
-    (45, 'Product45', 45, 6.99),
-    (46, 'Product46', 46, 5.99),
-    (47, 'Product47', 47, 4.99),
-    (48, 'Product48', 48, 3.99),
-    (49, 'Product49', 49, 2.99),
-    (50, 'Product50', 50, 1.99)
+-- Write an SQL query to find the name of the product with the highest 
+-- price in each country.
 
--- write an SQL query to find name of the product with highest price in each country. return the product_name, price and country
+-- creating the product table 
+
+-- creating supplier table 
+
+CREATE TABLE suppliers(supplier_id int PRIMARY KEY,
+					  supplier_name varchar(25),
+					  country VARCHAR(25)
+					  );
+-- let's insert some values 
+
+INSERT INTO suppliers
+VALUES(501, 'alan', 'India'),
+		(502, 'rex', 'US'),
+		(503, 'dodo', 'India'),
+		(504, 'rahul', 'US'),
+		(505, 'zara', 'Canda'),
+		(506, 'max', 'Canada')
+;
+
+CREATE TABLE products(
+
+						product_id int PRIMARY KEY,
+						product_name VARCHAR(25),
+						supplier_id int,
+						price float,
+						FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id)
+						);
+
+INSERT INTO products
+VALUES	(201, 'iPhone 14', '501', 1299),
+		(202, 'iPhone 8', '502', 999),
+		(204, 'iPhone 13', '502', 1199),
+		(203, 'iPhone 11', '503', 1199),
+		(205, 'iPhone 12', '502', 1199),
+		(206, 'iPhone 14', '501', 1399),
+		(214, 'iPhone 15', '503', 1499),
+		(207, 'iPhone 15', '505', 1499),
+		(208, 'iPhone 15', '504', 1499),
+		(209, 'iPhone 12', '502', 1299),
+		(210, 'iPhone 13', '502', 1199),
+		(211, 'iPhone 11', '501', 1099),
+		(212, 'iPhone 14', '503', 1399),
+		(213, 'iPhone 8', '502', 1099)
+;
+
+-- adding more products 
+
+INSERT INTO products
+VALUES	(222, 'Samsung Galaxy S21', '504', 1699),
+		(223, 'Samsung Galaxy S20', '505', 1899),
+		(224, 'Google Pixel 6', '501', 899),
+		(225, 'Google Pixel 5', '502', 799),
+		(226, 'OnePlus 9 Pro', '503', 1699),
+		(227, 'OnePlus 9', '502', 1999),
+		(228, 'Xiaomi Mi 11', '501', 899),
+		(229, 'Xiaomi Mi 10', '504', 699),
+		(230, 'Huawei P40 Pro', '505', 1099),
+		(231, 'Huawei P30', '502', 1299),
+		(232, 'Sony Xperia 1 III', '503', 1199),
+		(233, 'Sony Xperia 5 III', '501', 999),
+		(234, 'LG Velvet', '505', 1899),
+		(235, 'LG G8 ThinQ', '504', 799),
+		(236, 'Motorola Edge Plus', '502', 1099),
+		(237, 'Motorola One 5G', '501', 799),
+		(238, 'ASUS ROG Phone 5', '503', 1999),
+		(239, 'ASUS ZenFone 8', '504', 999),
+		(240, 'Nokia 8.3 5G', '502', 899),
+		(241, 'Nokia 7.2', '501', 699),
+		(242, 'BlackBerry Key2', '504', 1899),
+		(243, 'BlackBerry Motion', '502', 799),
+		(244, 'HTC U12 Plus', '501', 899),
+		(245, 'HTC Desire 20 Pro', '505', 699),
+		(246, 'Lenovo Legion Phone Duel', '503', 1499),
+		(247, 'Lenovo K12 Note', '504', 1499),
+		(248, 'ZTE Axon 30 Ultra', '501', 1299),
+		(249, 'ZTE Blade 20', '502', 1599),
+		(250, 'Oppo Find X3 Pro', '503', 1999);
+
+
+
+SELECT * FROM suppliers;
+SELECT * FROM products;
+
+
+
+
+
+
+-- ----------------------------------------------
+-- My solution
+-- ----------------------------------------------
+
+
+
+
+WITH CTE
+AS (SELECT 
+		s.country,
+		p.product_name,
+		p.price,
+		ROW_NUMBER()	OVER(PARTITION BY s.country ORDER BY p.price DESC) as rn
+	FROM products as p
+	JOIN suppliers as s
+	ON s.supplier_id = p.supplier_id
+	)
 SELECT 
-    p.product_name,
-    p.price,
-    s.country
+	product_name, price,
+	country
+FROM CTE
+WHERE rn =1;
+
+--  another approach!
+SELECT
+	product_name,
+	price,
+	country
 FROM 
-    product p
-JOIN 
-    supplier s ON p.supplier_id = s.supplier_id
-WHERE 
-    (p.price) IN (
-        SELECT MAX(price) 
-        FROM product p2 
-        JOIN supplier s2 ON p2.supplier_id = s2.supplier_id
-        WHERE s2.country = s.country
-        GROUP BY s2.country
-    );
+	(SELECT 
+		s.country,
+		p.product_name,
+		p.price,
+		ROW_NUMBER()	OVER(PARTITION BY s.country ORDER BY p.price DESC) as rn
+	FROM products as p
+	JOIN suppliers as s
+	ON s.supplier_id = p.supplier_id) x1 -- using alias for the query 
+WHERE rn = 1;
 
 
--- using window function and gropu by
-WITH ranked_products AS (
-    SELECT p.product_name, p.price, s.country
-    , RoW_NUMBER() OVER (PARTITION BY s.country ORDER BY p.price DESC) AS rank
-    FROM product AS p
-    JOIN supplier AS s ON p.supplier_id = s.supplier_id
-)
-SELECT product_name, price, country
-FROM ranked_products
-WHERE rank = 1;
+
+
